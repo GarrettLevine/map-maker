@@ -12,11 +12,7 @@ all:
 
 build: clean
 	@go vet $$(go list ./... | grep -v /vendor/)
-	@go build -o ./bin/map_maker-$(version).bin -ldflags "-X main.version=$(version)" cmd/drawer/main.go
-
-build_linux: clean
-	@go vet $$(go list ./... | grep -v /vendor/)
-	@GOOS=linux GOARCH=amd64 go build -o ./bin/map_maker-$(version).bin -ldflags "-X main.version=$(version)" cmd/main.go
+	@go build -o ./bin/map_maker-$(version).bin -ldflags "-X main.version=$(version)" cmd/main.go
 
 clean:
 	@rm -rf ./bin
